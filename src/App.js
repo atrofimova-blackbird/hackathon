@@ -1,9 +1,14 @@
+import React from "react";
+// import ReactDOM from "react-dom";
+
 import './App.css';
+
+import Layout from "./hoc/Layout";
 
 function App() {
   return (
-    <div className="App">
-
+    <div>
+      <Layout />
     </div>
   );
 }
