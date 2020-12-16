@@ -14,3 +14,8 @@
 .ResultCard .beacons-data {
     padding: 5px 15px;
 }
+
+.ResultCard .beacons-data span,
+.ResultCard .header span {
+    color: #9a311f;
+}
