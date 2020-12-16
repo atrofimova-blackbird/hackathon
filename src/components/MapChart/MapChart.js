@@ -26,7 +26,7 @@ const offsets = {
   DC: [49, 21]
 };
 
-const MapChart = ({ setTooltipContent }) => {
+const MapChart = (props) => {
   return (
     <ComposableMap className="MapChart" data-tip="" projection="geoAlbersUsa">
       <Geographies geography={geoUrl}>
@@ -42,13 +42,21 @@ const MapChart = ({ setTooltipContent }) => {
                   onMouseEnter={() => {
                     // const NAME = geo.properties.name;
                     const { clicks, opens } = cur;
-                    setTooltipContent(`Reduced analytics: ${clicks} clicks, ${opens} opens`);
+                    props.setTooltipContent(`Reduced analytics: ${clicks} clicks, ${opens} opens`);
                   }}
                   onMouseLeave={() => {
-                    setTooltipContent("");
+                    props.setTooltipContent("");
                   }}
                   onClick={() => {
-
+                    props.setBeaconsContent({
+                      id: cur.id,
+                      name: geo.properties.name,
+                      opens: cur.opens,
+                      engaged_visits: cur.engaged_visits,
+                      page_views: cur.page_views,
+                      clicks: cur.clicks,
+                      ttm: cur.ttm
+                    });
                   }}
                   style={{
                     default: {

@@ -5,11 +5,13 @@ import ResultCard from "../components/ResultCard/ResultCard";
 
 function Layout() {
   const [content, setContent] = useState("");
+  const [beacons, setBeacons] = useState({});
+
   return (
     <div className="Layout">
-      <MapChart setTooltipContent={setContent} />
+      <MapChart setBeaconsContent={setBeacons} setTooltipContent={setContent} />
       <ReactTooltip>{content}</ReactTooltip>
-      <ResultCard />
+      <ResultCard beacons={beacons} />
     </div>
   );
 }
