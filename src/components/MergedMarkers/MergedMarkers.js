@@ -71,15 +71,20 @@ const MergedMarkers = (props) => {
     let [lon, lat] = coordBasedKey.split(':');
 
     let beaconsForZips = getBeaconsObjectForZips(zipsForMarker);
-
     let beaconsForSquare = getSumBeaconsForSquare(beaconsForZips);
+
+    // console.log(beaconsForZips);
+
+    let onlyUnique = (value, index, self) => self.indexOf(value) === index;
+    let merchantsForSquare = beaconsForZips.map(b => b.merchant_name).filter(onlyUnique);
+    let citiesForSquare = beaconsForZips.map(b => b.city).filter(onlyUnique);
 
     UIMarkers.push(
       <Marker key={`${lon}-${lat}`} coordinates={[lon, lat]}
               // onMouseEnter={() => props.setTooltipContent(`${zipsForMarker.join(', ')}`)}
-              onMouseEnter={() => props.setTooltipContent("test")}
+              onMouseEnter={() => props.setTooltipContent(merchantsForSquare.join(", "))}
               onMouseLeave={() => props.setTooltipContent("")}
-              onClick={()=>{props.setBeaconsContent({
+              onClick={()=>{console.log("beaconsForZips", beaconsForZips); props.setBeaconsContent({
                 zipsForMarker: zipsForMarker,
                 ...beaconsForSquare
                 }
