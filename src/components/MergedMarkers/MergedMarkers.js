@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Marker } from "react-simple-maps";
 
 import beaconsData from "../../data/beaconsData";
@@ -65,6 +65,8 @@ let getSumBeaconsForSquare = beaconsForZips => {
 const MergedMarkers = (props) => {
   let UIMarkers = [];
 
+  const [currentTarget, setCurrentTarget] = useState(null);
+
   mergedMarkersArr.map((marker) => {
     let coordBasedKey = Object.keys(marker)[0];
     let zipsForMarker = Object.keys(marker[coordBasedKey]);
@@ -79,11 +81,18 @@ const MergedMarkers = (props) => {
               // onMouseEnter={() => props.setTooltipContent(`${zipsForMarker.join(', ')}`)}
               onMouseEnter={() => props.setTooltipContent("test")}
               onMouseLeave={() => props.setTooltipContent("")}
-              onClick={()=>{props.setBeaconsContent({
-                zipsForMarker: zipsForMarker,
-                ...beaconsForSquare
-                }
-              )}}
+              onClick={(e) => {
+                props.setBeaconsContent({
+                  zipsForMarker: zipsForMarker,
+                  ...beaconsForSquare
+                });
+                const target = e.currentTarget;
+                setCurrentTarget(target);
+                target.classList.add('selected');
+                if (currentTarget !== target && currentTarget) {
+                  currentTarget.classList.remove('selected');
+                } 
+              }}
               style={{
                 default: {
                   fill: "rgba(0,0,0, 0)",

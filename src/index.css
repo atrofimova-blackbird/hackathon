@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.rsm-marker.selected {
+  fill: rgba(16, 235, 34, 0.4)!important;
+}
