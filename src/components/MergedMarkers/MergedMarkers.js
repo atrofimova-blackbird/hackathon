@@ -4,7 +4,7 @@ import { Marker } from "react-simple-maps";
 import TXZipCodes from "../../data/tx-zip-code-latitude-and-longitude";
 // import TXZipCodes from "../../data/test";
 
-const MARKER_DECIMAL = 1;
+const MARKER_DECIMAL = 0;
 
 let originalMarkers = TXZipCodes.map(entry => entry.fields);
 let mergedMarkers = {};
@@ -42,8 +42,8 @@ const MergedMarkers = (props) => {
 
     UIMarkers.push(
       <Marker key={`${lon}-${lat}`} coordinates={[lon, lat]}
-                    onMouseEnter={props.setTooltipContent(`${lon}-${lat}`)}
-                    onMouseLeave={props.setTooltipContent("")}
+                    onMouseEnter={() => props.setTooltipContent(`${lon}-${lat}`)}
+                    onMouseLeave={() => props.setTooltipContent("")}
                     onClick={()=>{console.log('click')}}>
         <circle r={2} fill="#F00" />
       </Marker>
