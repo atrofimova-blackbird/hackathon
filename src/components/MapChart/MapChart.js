@@ -90,7 +90,7 @@ const MapChart = (props) => {
           )}
         </Geographies>
 
-        <MergedMarkers setTooltipContent={props.setTooltipContent}>
+        <MergedMarkers setBeaconsContent={props.setBeaconsContent} setTooltipContent={props.setTooltipContent}>
         </MergedMarkers>
 )}
 

@@ -1,7 +1,9 @@
 import React from "react";
 import { Marker } from "react-simple-maps";
 
+import beaconsData from "../../data/beaconsData";
 import TXZipCodes from "../../data/tx-zip-code-latitude-and-longitude";
+// import beaconsData from "../../data/testBeaconsData";
 // import TXZipCodes from "../../data/test";
 
 const MARKER_DECIMAL = 0;
@@ -22,8 +24,6 @@ originalMarkers.map(entry => {
   }
 });
 
-console.log("mergedMarkers", mergedMarkers);
-
 let mergedMarkersArr = [];
 
 for (const [key, value] of Object.entries(mergedMarkers)) {
@@ -32,19 +32,58 @@ for (const [key, value] of Object.entries(mergedMarkers)) {
   mergedMarkersArr.push(tmp);
 }
 
+
+// MAP ZIP WITH BEACONS
+
+class BeaconCollection extends Array {
+  sum(key) {
+    return this.reduce((a, b) => a + (b[key] || 0), 0);
+  }
+}
+
+let getBeacons = () => beaconsData.map((beacon)=>{
+  return beacon;
+});
+
+let getBeaconsObjectForZips = zips => getBeacons().filter(beacon=>{
+  return zips.includes(beacon.postal_code);
+});
+
+
+let getSumBeaconsForSquare = beaconsForZips => {
+  let beac = new BeaconCollection(...beaconsForZips);
+
+  return {
+    item_views: beac.sum('item_views'),
+    clicks: beac.sum('clicks'),
+    clippings: beac.sum('clippings'),
+    add_to_cart: beac.sum('add_to_cart'),
+    shares: beac.sum('shares'),
+    ttms: beac.sum('ttms')
+  };
+}
+
 const MergedMarkers = (props) => {
   let UIMarkers = [];
 
   mergedMarkersArr.map((marker) => {
-
     let coordBasedKey = Object.keys(marker)[0];
+    let zipsForMarker = Object.keys(marker[coordBasedKey]);
     let [lon, lat] = coordBasedKey.split(':');
+
+    let beaconsForZips = getBeaconsObjectForZips(zipsForMarker);
+
+    let beaconsForSquare = getSumBeaconsForSquare(beaconsForZips);
 
     UIMarkers.push(
       <Marker key={`${lon}-${lat}`} coordinates={[lon, lat]}
-              onMouseEnter={() => props.setTooltipContent(`${lon}-${lat}`)}
+              onMouseEnter={() => props.setTooltipContent(`${zipsForMarker.join(', ')}`)}
               onMouseLeave={() => props.setTooltipContent("")}
-              onClick={()=>{console.log('click')}}
+              onClick={()=>{props.setBeaconsContent({
+                zipsForMarker: zipsForMarker,
+                ...beaconsForSquare
+                }
+              )}}
               style={{
                 default: {
                   fill: "rgba(0,0,0, 0)",
