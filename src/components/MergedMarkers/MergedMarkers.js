@@ -3,8 +3,7 @@ import { Marker } from "react-simple-maps";
 
 import beaconsData from "../../data/beaconsData";
 import TXZipCodes from "../../data/tx-zip-code-latitude-and-longitude";
-// import beaconsData from "../../data/testBeaconsData";
-// import TXZipCodes from "../../data/test";
+
 
 const MARKER_DECIMAL = 0;
 
@@ -77,7 +76,8 @@ const MergedMarkers = (props) => {
 
     UIMarkers.push(
       <Marker key={`${lon}-${lat}`} coordinates={[lon, lat]}
-              onMouseEnter={() => props.setTooltipContent(`${zipsForMarker.join(', ')}`)}
+              // onMouseEnter={() => props.setTooltipContent(`${zipsForMarker.join(', ')}`)}
+              onMouseEnter={() => props.setTooltipContent("test")}
               onMouseLeave={() => props.setTooltipContent("")}
               onClick={()=>{props.setBeaconsContent({
                 zipsForMarker: zipsForMarker,
