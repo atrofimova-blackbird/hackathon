@@ -42,10 +42,28 @@ const MergedMarkers = (props) => {
 
     UIMarkers.push(
       <Marker key={`${lon}-${lat}`} coordinates={[lon, lat]}
-                    onMouseEnter={() => props.setTooltipContent(`${lon}-${lat}`)}
-                    onMouseLeave={() => props.setTooltipContent("")}
-                    onClick={()=>{console.log('click')}}>
-        <circle r={2} fill="#F00" />
+              onMouseEnter={() => props.setTooltipContent(`${lon}-${lat}`)}
+              onMouseLeave={() => props.setTooltipContent("")}
+              onClick={()=>{console.log('click')}}
+              style={{
+                default: {
+                  fill: "rgba(0,0,0, 0)",
+                  transition: "all .2s ease"
+                },
+                hover: {
+                  fill: "rgba(0,0,0, .4)",
+                  transition: "all .2s ease"
+                }
+              }}
+      >
+
+        <g transform="translate(-41, -41)"
+           strokeLinecap="round"
+           strokeLinejoin="round">
+          <path d="M 33 33 H 50 V 50 H 33 L 33 33"/>
+        </g>
+
+        {/*<circle r={2} fill="#F00" />*/}
       </Marker>
     );
   })
