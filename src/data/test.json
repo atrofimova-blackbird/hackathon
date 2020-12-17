@@ -1,0 +1,130 @@
+[
+  {
+    "datasetid": "us-zip-code-latitude-and-longitude",
+    "recordid": "66439c8a6e1286118738eae874a5b0d1ef4dd249",
+    "fields": {
+      "city": "Beckville",
+      "zip": "75631",
+      "dst": 1,
+      "geopoint": [
+        32.237924,
+        -94.46427
+      ],
+      "longitude": -94.46427,
+      "state": "TX",
+      "latitude": 32.237924,
+      "timezone": -6
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -94.46427,
+        32.237924
+      ]
+    },
+    "record_timestamp": "2018-02-09T18:33:38.603+02:00"
+  },
+  {
+    "datasetid": "us-zip-code-latitude-and-longitude",
+    "recordid": "bc0dba7407af22269dca69963981b1ab6dcf9f0c",
+    "fields": {
+      "city": "Tennyson",
+      "zip": "76953",
+      "dst": 1,
+      "geopoint": [
+        32.257924,
+        -94.42427
+      ],
+      "longitude": -94.42427,
+      "state": "TX",
+      "latitude": 32.257924,
+      "timezone": -6
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -94.42427,
+        32.257924
+      ]
+    },
+    "record_timestamp": "2018-02-09T18:33:38.603+02:00"
+  },
+  {
+    "datasetid": "us-zip-code-latitude-and-longitude",
+    "recordid": "ae61e62e53e54e0a0e6d43b5e0509f0969e2cf9f",
+    "fields": {
+      "city": "Plains",
+      "zip": "79355",
+      "dst": 1,
+      "geopoint": [
+        32.277924,
+        -94.44427
+      ],
+      "longitude": -94.44427,
+      "state": "TX",
+      "latitude": 32.277924,
+      "timezone": -6
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -94.44427,
+        32.277924
+      ]
+    },
+    "record_timestamp": "2018-02-09T18:33:38.603+02:00"
+  },
+
+
+
+  {
+    "datasetid": "us-zip-code-latitude-and-longitude",
+    "recordid": "ae61e62e53e54e0a0e6d43b5e0509f0969e2cf9f",
+    "fields": {
+      "city": "Plains",
+      "zip": "79355",
+      "dst": 1,
+      "geopoint": [
+        30.694842,
+        -107.299987
+      ],
+      "longitude": -107.299987,
+      "state": "TX",
+      "latitude": 30.694842,
+      "timezone": -6
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -107.299987,
+        30.694842
+      ]
+    },
+    "record_timestamp": "2018-02-09T18:33:38.603+02:00"
+  },
+  {
+    "datasetid": "us-zip-code-latitude-and-longitude",
+    "recordid": "ae61e62e53e54e0a0e6d43b5e0509f0969e2cf9f",
+    "fields": {
+      "city": "Plains",
+      "zip": "87765",
+      "dst": 1,
+      "geopoint": [
+        30.674842,
+        -107.279987
+      ],
+      "longitude": -107.279987,
+      "state": "TX",
+      "latitude": 30.674842,
+      "timezone": -6
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -107.279987,
+        30.674842
+      ]
+    },
+    "record_timestamp": "2018-02-09T18:33:38.603+02:00"
+  }
+]
